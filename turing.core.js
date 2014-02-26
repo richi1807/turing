@@ -1,3 +1,7 @@
+/**
+   The core turing library. We will extend the functinality of the turing library
+   through the mentioned turing.functional.js 
+**/
 (function(global){
 	var turing = {
 		version : "0.0.1" ,
