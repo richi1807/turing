@@ -1,0 +1,45 @@
+<!doctype html>
+<html>	
+	<head>
+		<title>
+			A simple page to demonstrate the turing library 
+		</title>
+		<style type="text/css">
+			.error {
+				color : red ;
+				text-decoration : line-through ;
+			} 
+			.success {
+				color : green ; 
+			}
+		</style>
+		<script src="turing.core.js"> </script>
+	</head>
+	<body>
+		A simple page to demonstrate the working of the turing library 
+		<script type="text/javascript">
+			function assert( clause , string){
+				var body = document.getElementsByTagName("body")[0];
+				if(!clause){
+					var errorNode = document.createElement("h2");
+					errorNode.className = "error";
+					errorNode.appendChild(document.createTextNode(string));
+					body.appendChild(errorNode);
+				}
+				else {
+					var successNode = document.createElement("h2");
+					successNode.className = "success" ;
+					successNode.appendChild(document.createTextNode(string));
+					body.appendChild(successNode);
+				}
+				window.assert = assert ;
+			};
+			/*Some assertions that we need to make after the test page has loaded up*/
+			window.onload = function() {
+				assert(turing , "The turing variable should be present");
+				assert(typeof turing.version != "undefined" && turing.version === "0.0.1" , "The version number should be defined with 0.0.1 version");
+				assert(typeof turing.description != "undefined" && turing.description , "The description is present ") ;
+			};
+		</script>	
+	</body>
+</html>
