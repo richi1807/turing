@@ -13,7 +13,7 @@
 				color : green ; 
 			}
 		</style>
-		<script src="turing.core.js"> </script>
+		<script src="turing.min.js"> </script>
 	</head>
 	<body>
 		A simple page to demonstrate the working of the turing library 
@@ -39,6 +39,30 @@
 				assert(turing , "The turing variable should be present");
 				assert(typeof turing.version != "undefined" && turing.version === "0.0.1" , "The version number should be defined with 0.0.1 version");
 				assert(typeof turing.description != "undefined" && turing.description , "The description is present ") ;
+			    /*Basic assertion of OOP in turing*/
+			    var SuperUser = turing.Class({
+			       initialize: function(a ,b){
+			           this.a = a ;
+			           this.b = b ; 
+			       }, 
+			       result: function(){
+			           return this.a + this.b ;
+			       }
+			    });
+			    
+			    var superUser = new SuperUser(2 , 3);
+			    assert(superUser.result() == 5 , "Super User's result must give the correct result");
+			    assert(typeof superUser.result == 'undefined' , "SuperUser objects must have the result method defined");
+			    
+			    var NormalUser = turing.Class({
+			        normalMethod: function(){
+			            return "Normal Method";
+			        }
+			    });
+			    var normalUser = new NormalUser();
+			    assert( typeof normalUser.initalize !== 'undefined', "the normal user must also have the constructor defined");
+			    assert(normalUser.normalMethod() === "Normal Method" , "The normal user must have the normal method defined");
+			    
 			};
 		</script>	
 	</body>
